@@ -1,0 +1,49 @@
+.coll-cont h1 {
+    font-size: 5.5vw;
+    padding: 0 2vw;
+    color: rgba(0, 0, 0, 0.637);
+    margin-top: 2.5vw;
+    letter-spacing: .5vw;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Jost', sans-serif;
+}
+
+.coll-cont h1 div {
+    /* display: inline-block; */
+    font-size: 4vw;
+    text-decoration: none;
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    padding: 0;
+    color: black;
+    text-align: end;
+    letter-spacing: .25vw;
+    margin-top: 10%;
+    display: none;
+}
+
+.coll-cont h1 div span {
+    border-bottom: .25vw black solid;
+    padding-bottom: .5vh;
+    opacity: .75;
+}
+
+.coll-cont h1 div span img {
+    width: 2.5vw;
+}
+
+@media only screen and (min-width:767px) {
+    .coll-cont h1 {
+        font-size: 3vw;
+    }
+    .coll-cont h1 div {
+        font-size: 2vw;
+    }
+    .coll-cont h1 div span {
+        border-bottom: .1vw black solid;
+    }
+    .coll-cont h1 div span img {
+        width: 1vw;
+    }
+}

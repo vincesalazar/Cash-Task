@@ -1,0 +1,22 @@
+.for-footer {
+    min-height: 80Vh;
+}
+
+.coll-title {
+    font-size: 7vw;
+    font-weight: 550;
+    text-align: center;
+    letter-spacing: .4vw;
+    color: #000000bf;
+    margin-bottom: 1vw;
+}
+
+.no-tasks {
+    font-size: 7vw;
+}
+
+@media only screen and (min-width:767px) {
+    .coll-title {
+        font-size: 3.5vw;
+    }
+}

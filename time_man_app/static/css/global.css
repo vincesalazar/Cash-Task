@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Jost&family=Open+Sans&family=Source+Sans+Pro&family=Sriracha&display=swap" rel="stylesheet');
+FONTS {
+    font-family: 'Sriracha', cursive;
+    font-family: 'Handlee', cursive;
+    font-family: 'Open Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+}
+
+body {
+    margin: 0;
+    padding-top: 11%;
+    /* background-color: #598392; */
+    background-color: #fbfbfb;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+}
+
+input[type=text] {
+    outline: none;
+    border: none;
+}
+
+.for-footer {
+    min-height: 90vh;
+}
+
+.logo-trigger {
+    position: absolute;
+    top: .5rem;
+}
+
+.logo {
+    font-weight: 700;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.068);
+    font-size: 6vw;
+    cursor: default;
+    color: #000066;
+    letter-spacing: 1.75px;
+    text-align: end;
+    position: absolute;
+    display: block;
+    top: 1vw;
+    left: 1vw;
+    z-index: 0;
+    font-family: 'Jost', sans-serif;
+}
+
+.logo::after {
+    width: 50px;
+    height: 50px;
+    z-index: 200;
+    background-color: black;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vw 1vw;
+    /* position: relative; */
+    position: fixed;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    /* bottom: 0; */
+    background-color: #fbfbfb;
+    display: none;
+    opacity: 0;
+    z-index: 400;
+}
+
+nav .phone-x {
+    position: absolute;
+    font-weight: 900;
+    font-size: 6vw;
+    cursor: default;
+    color: #000066;
+    letter-spacing: 1.75px;
+    text-align: end;
+    top: 1vw;
+    right: 2vw;
+    display: none;
+    opacity: 0;
+    transform: translateY(-100px);
+}
+
+nav ul {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0 0;
+    display: flex;
+    height: 60%;
+    /* display: none; */
+}
+
+nav ul li {
+    color: #000066;
+    /* position: relative; */
+    transition: color .9s;
+    font-size: 7vw;
+    /* margin-left: 5vw; */
+    margin: 2rem 0;
+    /* padding-bottom: .2rem; */
+    /* border-bottom: #c0c0c0d5 1px solid; */
+    text-align: center;
+    margin: 0;
+}
+
+nav ul li a:hover {
+    color: #EEC643;
+    transition: color .3s;
+}
+
+.desktop-nav {
+    display: none;
+}
+
+.side-nav-for-desktop {
+    display: none;
+}
+
+.hamburger {
+    display: flex;
+    position: fixed;
+    top: 1.5vw;
+    right: 2vw;
+    padding: 0 0 0 0;
+    /* border-radius: 10px; */
+    background-color: transparent;
+    z-index: 300;
+}
+
+.hamburger img {
+    width: 6.5vw;
+    height: 6.5vw;
+    /* margin: 0 -.5vw; */
+}
+
+.timestamp {
+    font-size: 3.5vw;
+    color: #000000a8;
+    letter-spacing: .4vw;
+    text-align: center;
+}
+
+footer {
+    font-size: 2.3vw;
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    /* flex-direction: column; */
+    align-items: center;
+    background-color: #aaaaaa;
+    color: white;
+    padding: 2vw;
+}
+
+@media only screen and (min-width: 767px) {
+    body {
+        padding-top: 5.5%;
+    }
+    .logo {
+        font-size: 3vw;
+    }
+    .hamburger {
+        top: 1.5vh;
+        display: none;
+    }
+    .hamburger img {
+        width: 4vw;
+        height: 4vw;
+    }
+    .desktop-nav {
+        display: block;
+        position: absolute;
+        top: 1.5vw;
+        right: 1vw;
+        width: 50vw;
+    }
+    .desktop-nav ul {
+        display: flex;
+        justify-content: space-between;
+    }
+    .desktop-nav ul li {
+        font-size: 2vw;
+        text-transform: lowercase;
+    }
+    .desktop-nav ul li a {
+        cursor: pointer;
+    }
+    .desktop-nav ul li a span {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-family: 'Sriracha', cursive;
+        font-family: 'Handlee', cursive;
+        font-family: 'Jost', sans-serif;
+        font-family: 'Open Sans', sans-serif;
+    }
+    .side-nav-for-desktop {
+        display: block;
+        position: fixed;
+        left: 1%;
+        top: 35%;
+        min-height: 1rem;
+    }
+    .side-nav-for-desktop ul {
+        display: flex;
+        flex-direction: column;
+        height: 30vh;
+        justify-content: space-between;
+    }
+    .side-nav-for-desktop ul li a {
+        font-size: 2vw;
+    }
+    .for-footer {
+        padding: 0 12.5%;
+    }
+    .timestamp {
+        font-size: 1vw;
+        font-weight: 600;
+        letter-spacing: .2vw;
+    }
+    footer {
+        font-size: 1vw;
+    }
+}
