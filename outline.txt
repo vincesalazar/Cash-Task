@@ -1,2 +1,0 @@
-techs:python, django, html5, css3, javascript
-feats:login reg, add/update/delete, one to many relationship:tasks to section, one big general section as well. another app to do take petty to do lists tasks and pay people to do your other tasks.
