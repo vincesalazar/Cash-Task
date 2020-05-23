@@ -3,11 +3,23 @@ from django.contrib import messages
 import bcrypt
 from time_man_app.models import User, Task, Collection
 
+"""
+    TEMPLATES
+"""
+
 def index(request):
     return render(request, "cash/index.html")
 
 def homepage(request):
+    if 'user_id' not in request.session:
+       messages.error(request, 'Must be logged in')
+       return redirect('/')
     return render(request, "cash/homepage.html")
+
+""""""""""""
+"""
+    LOGIN / REGISTER / LOGOUT
+"""
 
 def register(request):
     post = request.POST
@@ -53,4 +65,57 @@ def login(request):
     else:
         messages.error(request, "please check your email and password.")
         return redirect('/cashtask')
-# Create your views here.
+
+def logout(request):
+    request.session.clear()
+    return redirect('/')
+
+"""
+    JOB PROCESS
+"""
+def createJob(request):
+    if 'user_id' not in request.session:
+       messages.error(request, 'Must be logged in')
+       return redirect('/')
+    if request.method == "POST":
+        post = request.POST
+        loggedInUser = User.objects.get(id = request.session["user_id"])
+        Job.objects.create(title = post["title"].capitalize(), description = post["description"], price = post["price"], city = post["city"].capitalize(), state = post["state"].upper(), user = loggedInUser)
+    else:
+        request.session.clear()
+        return redirect('/homepage')
+
+def deleteJob(request, id):
+    if 'user_id' not in request.session:
+       messages.error(request, 'Must be logged in')
+       return redirect('/')
+    user = User.objects.get(id = request.session["user_id"])
+    job = Job.objects.get(id = id)
+    if user.id != job.user_id:
+        pass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
