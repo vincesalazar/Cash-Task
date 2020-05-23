@@ -8,5 +8,10 @@ urlpatterns = [
     # LOGIN REG PROCESS
     path('register', views.register),
     path('login', views.login),
-    # path('logout', views.logout),
+    path('logout', views.logout),
+    # JOB PROCESS
+    path('createJob', views.createJob),
+    path('deleteJob/<int:id>', views.deleteJob),
+    # path('updateJob', views.updateJob),
+    # path('pinJob', views.pinJob),
 ]
