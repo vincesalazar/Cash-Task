@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 import bcrypt
 from time_man_app.models import User, Task, Collection
+from cash_task_app.models import Job
+from django.core.paginator import Paginator
 
 """
     TEMPLATES
@@ -14,9 +16,26 @@ def homepage(request):
     if 'user_id' not in request.session:
        messages.error(request, 'Must be logged in')
        return redirect('/')
-    return render(request, "cash/homepage.html")
+    context = {
+        "user": User.objects.get(id = request.session["user_id"]),
+        "jobs": Job.objects.all(),
+    }
+    return render(request, "cash/homepage.html", context)
 
-""""""""""""
+def createJobPage(request):
+    return render(request, "cash/createJobPage.html")
+
+def pagination(request):
+    user_list = User.objects.all()
+    paginator = Paginator(user_list, 2) # Show 2 users per page.
+
+    page_number = request.GET.get('page')
+    context = {
+        "page_obj": paginator.get_page(page_number)
+    }
+    return render(request, "cash/pagination.html", context)
+
+""""""
 """
     LOGIN / REGISTER / LOGOUT
 """
@@ -73,7 +92,9 @@ def logout(request):
 """
     JOB PROCESS
 """
+
 def createJob(request):
+    print("INSIDE CREATE JOB")
     if 'user_id' not in request.session:
        messages.error(request, 'Must be logged in')
        return redirect('/')
@@ -81,10 +102,45 @@ def createJob(request):
         post = request.POST
         loggedInUser = User.objects.get(id = request.session["user_id"])
         Job.objects.create(title = post["title"].capitalize(), description = post["description"], price = post["price"], city = post["city"].capitalize(), state = post["state"].upper(), user = loggedInUser)
+        return redirect("/cashtask/homepage")
     else:
         request.session.clear()
         return redirect('/homepage')
 
+# unfinished
+def updateJob(request, id):
+    if 'user_id' not in request.session:
+       messages.error(request, 'Must be logged in')
+       return redirect('/')
+    if request.method == "POST":
+        job = Job.objects.get(id = id)
+        if job.user_id != request.session["user_id"]:
+            return redirect("/")
+        else:
+            post = request.POST
+            job.title = post["title"]
+            job.description = post["description"]
+            job.price = post["price"]
+            job.city = post["city"]
+            job.state = post["state"]
+            job.save()
+    else:
+        return redirect("/")
+
+# unfinished
+def pinJob(request, id):
+    if 'user_id' not in request.session:
+       messages.error(request, 'Must be logged in')
+       return redirect('/')
+    user = User.objects.get(id = request.session["user_id"])
+    job = Job.objects.get(id = id)
+    if job.pinned.filter(user_id = request.session['user_id']).exists():
+        job.pinned.remove(user)
+        return redirect("/homepage")
+    else:
+        job.pinned.add(user)
+
+# unfinished
 def deleteJob(request, id):
     if 'user_id' not in request.session:
        messages.error(request, 'Must be logged in')
@@ -92,7 +148,10 @@ def deleteJob(request, id):
     user = User.objects.get(id = request.session["user_id"])
     job = Job.objects.get(id = id)
     if user.id != job.user_id:
-        pass
+        return redirect("/")
+    else:
+        job.delete()
+    
 
 
 
