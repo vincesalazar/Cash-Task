@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,10 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cash Task - Home</title>
+
 </head>
 
 <body>
     <h2>cash task</h2>
+    <a href="/cashtask/createJob">Add a job</a>
+    <h4>{{user.first_name}}</h4>
+    {% if jobs %} {% for job in jobs %}
+    <div class="job">
+        <p>
+            <h4></h4>
+            <h5><span style="font-size: 2vw;">{{job.title}}</span> <br> {{job.city}}, {{job.state}}</h5>
+            <div>price: {{job.price}}</div>
+            <div>user: {{job.user.first_name}}</div>
+            <p>job description:{{job.description}}</p>
+        </p>
+    </div>
+    {% endfor %} {% endif %}
 </body>
 
 </html>
