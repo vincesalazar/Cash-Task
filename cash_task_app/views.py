@@ -35,6 +35,18 @@ def pagination(request):
     }
     return render(request, "cash/pagination.html", context)
 
+def userPage(request, email):
+    if 'user_id' not in request.session:
+       messages.error(request, 'Must be logged in')
+       return redirect('/')
+    user = User.objects.get(email = email)
+    loggedUser = User.objects.get(id = request.session['user_id'])
+    context = {
+        "user": user,
+        "loggedUser": loggedUser,
+    }
+    return render(request, "userpage.html", context)
+
 """"""
 """
     LOGIN / REGISTER / LOGOUT
