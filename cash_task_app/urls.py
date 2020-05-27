@@ -5,7 +5,8 @@ urlpatterns = [
     # TEMPLATES
     path('', views.index),
     path('homepage', views.homepage),
-    path("createJob", views.createJobPage),
+    path('createJob', views.createJobPage),
+    path('l/<str:email>', views.userPage),
     # PRACTICE PAGINATION
     path("pagination", views.pagination),
     # LOGIN REG PROCESS
