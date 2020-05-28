@@ -17,6 +17,7 @@ def homepage(request):
        messages.error(request, 'Must be logged in')
        return redirect('/')
     context = {
+        "all_users":User.objects.all(),
         "user": User.objects.get(id = request.session["user_id"]),
         "jobs": Job.objects.all(),
     }
@@ -43,7 +44,7 @@ def userPage(request, email):
     loggedUser = User.objects.get(id = request.session['user_id'])
     context = {
         "user": user,
-        "loggedUser": loggedUser,
+        "loggedUser": loggedUser, #so i can check belongings
     }
     return render(request, "userpage.html", context)
 
