@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 * {
     box-sizing: border-box;
 }
@@ -5,6 +6,7 @@
 body {
     margin: 0;
     background-color: #f5ffff;
+    font-family: 'Open Sans', sans-serif;
 }
 
 a {
@@ -73,7 +75,7 @@ ul {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 2vh 1rem;
+    padding: 1vh 1rem;
     background-color: #246EB9;
 }
 
@@ -89,5 +91,5 @@ ul {
 }
 
 .search select option {
-    font-size: 1px;
+    font-size: 1vw;
 }
